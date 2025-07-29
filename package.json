@@ -1,9 +1,12 @@
 {
-  "name": "@ejas404/nestjs-typed-event-emitter",
-  "version": "1.0.2",
+  "name": "nestjs-typed-event-emitter",
+  "version": "1.2.0",
   "description": "A type-safe event emitter for NestJS applications with strongly typed event handling",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "bin": {
+    "nestjs-typed-event-emitter-export": "scripts/export.js"
+  },
   "files": [
     "dist",
     "README.md",
@@ -13,7 +16,6 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "rimraf dist",
-    "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",

@@ -1,6 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { ListenerFn, OnOptions } from './interfaces/event-emitter.interface';
+
+interface ListenerFn {
+  (...values: any[]): void;
+}
+
+interface OnOptions {
+  async?: boolean;
+  promisify?: boolean;
+  nextTick?: boolean;
+  objectify?: boolean;
+}
 
 type EventNamesRes = ReturnType<EventEmitter2['eventNames']>;
 type EmitRes = ReturnType<EventEmitter2['emit']>;

@@ -4,12 +4,24 @@ An abstraction for nestjs `EventEmitter2` with type safety.
 
 Emitting event types will be checked with the registered `eventName` and `EventClass`.
 
-## Installation
+## Usage
+
+You can use this module in two ways:
+
+### Option 1: Install from npm (recommended for most users)
 
 ```bash
-npm install @ejas404/typed-event-emitter
+npm install nestjs-typed-event-emitter
 # or
-yarn add @ejas404/typed-event-emitter
+yarn add nestjs-typed-event-emitter
+```
+
+### Option 2: Use the CLI Export Script
+
+Export all necessary files into your project with a single command:
+
+```bash
+npx nestjs-typed-event-emitter-export
 ```
 
 ### Peer Dependencies
@@ -17,7 +29,7 @@ yarn add @ejas404/typed-event-emitter
 Make sure you have the following peer dependencies installed:
 
 ```bash
-npm install @nestjs/common @nestjs/core @nestjs/event-emitter reflect-metadata typescript
+npm install @nestjs/event-emitter
 ```
 
 ## Setup
@@ -27,7 +39,7 @@ npm install @nestjs/common @nestjs/core @nestjs/event-emitter reflect-metadata t
 ```typescript
 // app.module.ts
 import { Module } from '@nestjs/common';
-import { TypedEventEmitterModule } from '@ejas404/typed-event-emitter';
+import { TypedEventEmitterModule } from 'typed-event-emitter';
 
 @Module({
   imports: [
@@ -61,7 +73,7 @@ export interface EventMap {
 
 ```ts
 
-import { TypedEventEmitter } from '@ejas404/typed-event-emitter';
+import { TypedEventEmitter } from 'typed-event-emitter';
 import { EventMap } from '../file-where-event-map-exported';
 
 export class WebhooksService {
@@ -97,7 +109,7 @@ export class WebhooksService {
 For listening events you should use `OnTypedEvent` decorator, it will provide type safety for the type.
 
 ```ts
-import { OnTypedEvent } from '@ejas404/typed-event-emitter';
+import { OnTypedEvent } from 'typed-event-emitter';
 import { EventMap } from '../file-where-event-map-exported';
 
 @Injectable()
@@ -118,7 +130,7 @@ export class TransactionsListener {
 Note: You can define and use different EventMap types to handle various sets of events separately.
 
 ```ts
-import { TypedEventEmitter } from "@ejas404/typed-event-emitter";
+import { TypedEventEmitter } from "typed-event-emitter";
 
 constructor(private readonly eventEmitter1 : TypedEventEmitter<EventMap1>) {}
 
@@ -137,7 +149,6 @@ Same on the decorator too.
 
 ### TypedEventEmitter
 
-
 #### Methods
 
 - `emit<TEvent extends keyof TypedEventMap>(event: TEvent, payload: TypedEventMap[TEvent]): boolean` - Emit a typed event
@@ -146,8 +157,6 @@ Same on the decorator too.
 - `eventNames(): (keyof TypedEventMap)[]` - Get all registered event names
 - `removeListener<TEvent extends keyof TypedEventMap>(event: TEvent, listener: (payload: TypedEventMap[TEvent]) => void | Promise<void>): this` - Remove a specific listener for a typed event
 - `removeAllListeners<TEvent extends keyof TypedEventMap>(event?: TEvent): this` - Remove all listeners for a typed event
-
-
 
 ### Decorators
 

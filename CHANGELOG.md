@@ -1,3 +1,16 @@
+# [1.1.0] - 2025-07-29
+
+### Added
+- CLI export script (`scripts/export.js`) for copying all module files into a user's project
+- `bin` entry in package.json for npx/CLI usage (`npx nestjs-typed-event-emitter-export`)
+
+### Changed
+- README now documents both npm install and npx/CLI export usage options
+- README improved to focus on CLI script for copying files, with clear peer dependency instructions
+
+### Fixed
+- Clarified usage instructions and improved documentation for local and published usage
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -5,10 +18,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2024-01-XX
+## [1.0.0] - 2025-07-XX
 
 ### Added
-- Initial release of @ejas404/typed-event-emitter
+- Initial release of typed-event-emitter
 - TypedEventEmitter service with full type safety
 - OnTypedEvent decorator for type-safe event listeners
 - TypedEventEmitterModule for NestJS integration
